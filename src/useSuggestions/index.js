@@ -35,8 +35,11 @@ export default function useSuggestions(suggestionsData) {
   const onKeyPress = (e) => {
     if (e.keyCode === 13) {
       //enter
-      let inp = filteredSuggestions[activeSuggestionIndex - 1];
-      setUserInput(inp);
+      if (activeSuggestionIndex > 0) {
+        let inp = filteredSuggestions[activeSuggestionIndex - 1];
+        setUserInput(inp);
+      }
+
       setFilteredSuggestions([]);
       setShowSuggestions(false);
       setActiveSuggestionIndex(0);
