@@ -29,10 +29,8 @@ function App() {
     onKeyPress,
     onClick,
     onMouseEnter,
+    onBlur,
   ] = useSuggestions((value) => suggestions);
-  useEffect(() => {
-    console.log("INDEX=>", activeSuggestionIndex);
-  }, [activeSuggestionIndex]);
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
@@ -42,6 +40,7 @@ function App() {
         onChange={onChange}
         value={userInput}
         onKeyDown={onKeyPress}
+        onBlur={onBlur}
         onClick={() => onClick(userInput)}
         className="w-50"
         placeholder="Search..."

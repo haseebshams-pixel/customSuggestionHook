@@ -12,7 +12,6 @@ export default function useSuggestions(suggestionsData) {
     const filterArr = suggestions?.filter(
       (i) => i.toLowerCase().indexOf(inp.toLowerCase()) > -1
     );
-    console.log("Filter Array", filterArr);
     setFilteredSuggestions(filterArr);
     setShowSuggestions(true);
     setUserInput(inp);
@@ -29,7 +28,6 @@ export default function useSuggestions(suggestionsData) {
     const filterArr = suggestions?.filter(
       (i) => i.toLowerCase().indexOf(val.toLowerCase()) > -1
     );
-    console.log("Filter Array", filterArr);
     setFilteredSuggestions(filterArr);
     setShowSuggestions(true);
     setActiveSuggestionIndex(0);
@@ -57,8 +55,16 @@ export default function useSuggestions(suggestionsData) {
     }
   };
   const onMouseEnter = (index) => {
-    console.log("INDEX", index);
     setActiveSuggestionIndex(index + 1);
+  };
+  const onBlur = () => {
+    if (activeSuggestionIndex > 0) {
+      let inp = filteredSuggestions[activeSuggestionIndex - 1];
+      setUserInput(inp);
+    }
+    setFilteredSuggestions([]);
+    setShowSuggestions(false);
+    setActiveSuggestionIndex(0);
   };
   return [
     userInput,
@@ -70,5 +76,6 @@ export default function useSuggestions(suggestionsData) {
     onKeyPress,
     onClick,
     onMouseEnter,
+    onBlur,
   ];
 }
