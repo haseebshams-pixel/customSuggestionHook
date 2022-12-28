@@ -33,7 +33,6 @@
 }
 .single-item:hover {
   cursor: pointer;
-  background-color: lightgray;
 }
 .items-container {
   border: 1px solid black;

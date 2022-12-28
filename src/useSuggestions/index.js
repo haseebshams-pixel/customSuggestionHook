@@ -56,6 +56,10 @@ export default function useSuggestions(suggestionsData) {
       setActiveSuggestionIndex(activeSuggestionIndex + 1);
     }
   };
+  const onMouseEnter = (index) => {
+    console.log("INDEX", index);
+    setActiveSuggestionIndex(index + 1);
+  };
   return [
     userInput,
     activeSuggestionIndex,
@@ -65,5 +69,6 @@ export default function useSuggestions(suggestionsData) {
     onSelect,
     onKeyPress,
     onClick,
+    onMouseEnter,
   ];
 }

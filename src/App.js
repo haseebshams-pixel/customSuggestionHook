@@ -28,9 +28,10 @@ function App() {
     onSelect,
     onKeyPress,
     onClick,
-  ] = useSuggestions(suggestions);
+    onMouseEnter,
+  ] = useSuggestions((value) => suggestions);
   useEffect(() => {
-    console.log("INDEX", activeSuggestionIndex);
+    console.log("INDEX=>", activeSuggestionIndex);
   }, [activeSuggestionIndex]);
 
   return (
@@ -53,6 +54,9 @@ function App() {
                 key={index}
                 onClick={() => {
                   onSelect(index);
+                }}
+                onMouseEnter={() => {
+                  onMouseEnter(index);
                 }}
                 className={`${
                   activeSuggestionIndex - 1 === index ? "active" : ""
